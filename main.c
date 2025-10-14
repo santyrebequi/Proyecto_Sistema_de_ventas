@@ -1,9 +1,7 @@
 #include <stdio.h>
 
-main() {
-int main(void) { // Firma estándar de main
+int main(void) {
     printf("Hello, World!\n");
-    return 0;
-    printf("This line is unreachable.\n");
+    printf("PROYECTO DE MIERDA\n");
     return 0;
 }
