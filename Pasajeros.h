@@ -4,10 +4,10 @@
 #define NOMBRE_MAX 50
 #define APELLIDO_MAX 50
 #define EMAIL_MAX 50
-#define TELEFONO_MAX 15 // Un tamaño más realista para teléfonos
-#define DIR_MAX 100     // Las direcciones pueden ser largas
+#define TELEFONO_MAX 25
+#define DIR_MAX 100
 
-struct Pasajero { // Nombre en singular y PascalCase por convención
+struct Pasajero {
     int id;
     char nombre[NOMBRE_MAX];
     char apellido[APELLIDO_MAX];
