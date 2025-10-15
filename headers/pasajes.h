@@ -10,7 +10,7 @@
 #define PASAJERO_MAX 40
 
 
-struct pasajes
+struct Pasaje
 {
     int id[BUTACA_MAX][ID_MAX];
     int butaca[BUTACA_MAX];
@@ -19,6 +19,8 @@ struct pasajes
     char horario[HORARIO_MAX];
     char costo[COSTO_MAX];
     int cantpasajero[PASAJERO_MAX];
-    //llamar al id persona
+    int idpersona[PASAJERO_MAX];
+    char id_pasajero[IDPASAJERO_MAX]; // Relación con pasajero
 };
+void EmitirPasaje(struct Pasaje *pasajes, int *cantidadpasajes);
 #endif // PASAJES_H
