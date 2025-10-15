@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "Pasajeros.h"
-#include "pasajes.h"
-#include "Fecha.h"
+#include <pasajes.h>
+#include <fecha.h>
 
 void RegistrarPasaje(struct Pasaje *pasajes, int *cantidadpasajes);
 int cantidadpasajes = 0;
