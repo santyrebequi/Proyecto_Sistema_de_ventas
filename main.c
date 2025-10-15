@@ -5,5 +5,6 @@ int main(void) {
     printf("PROYECTO DE MIERDA\n");
     printf("Hola gente");
     printf("Hola gente2.0");
+    printf("Aguante cuadrado");
     return 0;
 }
