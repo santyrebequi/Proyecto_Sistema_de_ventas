@@ -22,5 +22,5 @@ struct Pasaje
     int idpersona[PASAJERO_MAX];
     char id_pasajero[IDPASAJERO_MAX]; // Relación con pasajero
 };
-void EmitirPasaje(struct Pasaje *pasajes, int *cantidadpasajes);
+void RegistrarPasaje(struct Pasaje *pasajes, int *cantidadpasajes);
 #endif // PASAJES_H
