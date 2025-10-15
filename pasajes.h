@@ -1,8 +1,8 @@
 #ifndef PASAJES_H
 #define PASAJES_H
 
-#define ID_MAX 5
-#define BUTACA_MAX 2
+#define ID_MAX 2 
+#define BUTACA_MAX 40
 #define DESTINO_MAX 50
 #define Fecha_MAX 11
 #define HORARIO_MAX 5
@@ -12,7 +12,7 @@
 
 struct pasajes
 {
-    int id[ID_MAX];
+    int id[BUTACA_MAX][ID_MAX];
     int butaca[BUTACA_MAX];
     char destino[DESTINO_MAX];
     char fecha[Fecha_MAX];
