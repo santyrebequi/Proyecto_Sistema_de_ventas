@@ -1,44 +1,67 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "pasajeros.h"
-#include "pasajes.h"
-#include "fecha.h"
+// Usar rutas relativas al directorio headers para que el indexador de VS Code
+// (cpptools) y el compilador encuentren los archivos de cabecera. */
+#include "../headers/Pasajeros.h"
+#include "../headers/pasajes.h"
+#include "../headers/Fecha.h"
 
 void RegistrarPasaje(struct Pasaje *pasajes, int *cantidadpasajes) {
     if (*cantidadpasajes >= BUTACA_MAX) {
         printf("No hay más butacas disponibles.\n");
         return;
     }
-
     struct Pasaje nuevoPasaje;
 
+    /* índice del nuevo pasaje en el array */
+    int idx = *cantidadpasajes;
+
+    /* Construir formatos seguros usando las macros de tamaño definidas en headers */
+    char fmt_destino[16];
+    char fmt_fecha[16];
+    char fmt_horario[16];
+    char fmt_costo[16];
+    char fmt_idpas[16];
+    snprintf(fmt_destino, sizeof(fmt_destino), "%%%ds", DESTINO_MAX - 1);
+    snprintf(fmt_fecha, sizeof(fmt_fecha), "%%%ds", Fecha_MAX - 1);
+    snprintf(fmt_horario, sizeof(fmt_horario), "%%%ds", HORARIO_MAX - 1);
+    snprintf(fmt_costo, sizeof(fmt_costo), "%%%ds", COSTO_MAX - 1);
+    snprintf(fmt_idpas, sizeof(fmt_idpas), "%%%ds", IDPASAJERO_MAX - 1);
+
     printf("Ingrese el destino: ");
-    scanf("%s", nuevoPasaje.destino);
+    if (scanf(fmt_destino, nuevoPasaje.destino) != 1) return;
 
     printf("Ingrese la fecha (DD/MM/AAAA): ");
-    scanf("%s", nuevoPasaje.fecha);
+    if (scanf(fmt_fecha, nuevoPasaje.fecha) != 1) return;
 
     printf("Ingrese el horario (HH:MM): ");
-    scanf("%s", nuevoPasaje.horario);
+    if (scanf(fmt_horario, nuevoPasaje.horario) != 1) return;
 
     printf("Ingrese el costo: ");
-    scanf("%s", nuevoPasaje.costo);
+    if (scanf(fmt_costo, nuevoPasaje.costo) != 1) return;
 
     printf("Ingrese la cantidad de pasajeros: ");
-    scanf("%d", &nuevoPasaje.cantpasajero[*cantidadpasajes]);
+    if (scanf("%d", &nuevoPasaje.cantpasajero[idx]) != 1) return;
 
-    for (int i = 0; i < nuevoPasaje.cantpasajero[*cantidadpasajes]; i++) {
+    /* Validar cantidad de pasajeros por pasaje */
+    if (nuevoPasaje.cantpasajero[idx] < 0 || nuevoPasaje.cantpasajero[idx] > PASAJERO_MAX) {
+        printf("Cantidad de pasajeros inválida. Máximo permitido: %d\n", PASAJERO_MAX);
+        return;
+    }
+
+    for (int i = 0; i < nuevoPasaje.cantpasajero[idx]; i++) {
         printf("Ingrese el ID del pasajero %d: ", i + 1);
-        scanf("%s", nuevoPasaje.id_pasajero);
+        if (scanf(fmt_idpas, nuevoPasaje.id_pasajero) != 1) return;
+        /* almacenar el id de la persona en la posición i del pasaje */
         nuevoPasaje.idpersona[i] = atoi(nuevoPasaje.id_pasajero);
     }
 
-    nuevoPasaje.butaca[*cantidadpasajes] = *cantidadpasajes + 1;
-    nuevoPasaje.id[*cantidadpasajes][0] = *cantidadpasajes + 1;
-    nuevoPasaje.id[*cantidadpasajes][1] = nuevoPasaje.butaca[*cantidadpasajes];
+    nuevoPasaje.butaca[idx] = idx + 1;
+    nuevoPasaje.id[idx][0] = idx + 1;
+    nuevoPasaje.id[idx][1] = nuevoPasaje.butaca[idx];
 
-    pasajes[*cantidadpasajes] = nuevoPasaje;
+    pasajes[idx] = nuevoPasaje;
     (*cantidadpasajes)++;
 
-    printf("Pasaje emitido con éxito. Butaca asignada: %d\n", nuevoPasaje.butaca[*cantidadpasajes - 1]);
+    printf("Pasaje emitido con éxito. Butaca asignada: %d\n", nuevoPasaje.butaca[idx]);
 }
