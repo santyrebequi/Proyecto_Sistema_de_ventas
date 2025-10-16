@@ -8,6 +8,8 @@
 #define EMAIL_MAX 30
 #define TELEFONO_MAX 15
 #define DIR_MAX 100
+// Esto definirá la cantidad de pasajeros, usamos 5 digitos del 0 al 9.
+// Es decir podemos registrar hasta 99999 pasajeros
 #define IDPASAJERO_MAX 5
 
 struct Pasajero {
