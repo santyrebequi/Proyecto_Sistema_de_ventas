@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "PASAJEROS.h"
+#include "pasajeros.h"
 #include "pasajes.h"
 #include "fecha.h"
 
