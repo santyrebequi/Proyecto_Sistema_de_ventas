@@ -1,5 +1,5 @@
-#ifndef PASAJEROS_H
-#define PASAJEROS_H
+#ifndef PASAJEROS.h
+#define PASAJEROS.h
 
 // Definiciones de constantes para las variables de los pasajeros
 #define NOMBRE_MAX 30
