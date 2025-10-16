@@ -1,19 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <Pasajeros.h>
-#include <pasajes.h>
-#include <fecha.h>
+#include "Pasajeros.h"
+#include "pasajes.h"
+#include "fecha.h"
 
-void RegistrarPasaje(struct Pasaje *pasajes, int *cantidadpasajes);
-int cantidadpasajes = 0;
-// Verificación de disponibilidad de butacas
-if (cantidadpasajes >= BUTACA_MAX) {
-    printf("No hay más butacas disponibles.\n");
-    return;
-} else {
+void RegistrarPasaje(struct Pasaje *pasajes, int *cantidadpasajes) {
+    if (*cantidadpasajes >= BUTACA_MAX) {
+        printf("No hay más butacas disponibles.\n");
+        return;
+    }
+
     struct Pasaje nuevoPasaje;
 
-    // Ingreso de datos del pasaje
     printf("Ingrese el destino: ");
     scanf("%s", nuevoPasaje.destino);
 
@@ -32,16 +30,13 @@ if (cantidadpasajes >= BUTACA_MAX) {
     for (int i = 0; i < nuevoPasaje.cantpasajero[*cantidadpasajes]; i++) {
         printf("Ingrese el ID del pasajero %d: ", i + 1);
         scanf("%s", nuevoPasaje.id_pasajero);
-        // Aquí se podría agregar lógica para verificar si el ID del pasajero existe
-        nuevoPasaje.idpersona[i] = atoi(nuevoPasaje.id_pasajero); // Convertir ID a entero  
+        nuevoPasaje.idpersona[i] = atoi(nuevoPasaje.id_pasajero);
     }
 
-    // Asignación de butaca (simplemente asignando el siguiente número disponible)
     nuevoPasaje.butaca[*cantidadpasajes] = *cantidadpasajes + 1;
-    nuevoPasaje.id[*cantidadpasajes][0] = *cantidadpasajes + 1; // ID del pasaje
-    nuevoPasaje.id[*cantidadpasajes][1] = nuevoPasaje.butaca[*cantidadpasajes]; // Butaca asignada
+    nuevoPasaje.id[*cantidadpasajes][0] = *cantidadpasajes + 1;
+    nuevoPasaje.id[*cantidadpasajes][1] = nuevoPasaje.butaca[*cantidadpasajes];
 
-    // Guardar el nuevo pasaje en el arreglo
     pasajes[*cantidadpasajes] = nuevoPasaje;
     (*cantidadpasajes)++;
 
