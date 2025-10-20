@@ -1,4 +1,8 @@
 #include <stdio.h>
+#include "../headers/Pasajeros.h"
+#include "../headers/pasajes.h"
+#include "../headers/Fecha.h"
+
 
 int main(void) {
     printf("Hello, World!\n");
