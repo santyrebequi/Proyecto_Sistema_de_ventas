@@ -37,4 +37,6 @@ void RegistrarPasajero(struct Pasajero *pasajeros, int *cantidadPasajeros)
     (*cantidadPasajeros)++;
     printf("Pasajero registrado exitosamente. ID asignado: %s\n", nuevoPasajero.idpasajero);
     printf("---------------------------------------\n");
+    // Guardar automáticamente después de registrar
+    GuardarPasajerosEnArchivo(pasajeros, *cantidadPasajeros);
 }
