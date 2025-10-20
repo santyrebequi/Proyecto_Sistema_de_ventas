@@ -3,7 +3,6 @@
 #include "../headers/pasajes.h"
 #include "../headers/Fecha.h"
 
-
 int main(){
     printf("Sistema de Venta de Pasajes\n");
 
@@ -24,7 +23,7 @@ int main(){
 
         switch (opcion) {
             case 1:
-                // Llamar a la función para registrar pasajero
+                // Llamar a la función para pasajero
                 RegistrarPasajero(pasajeros, &cantidadPasajeros);
                 break;
             case 2:
