@@ -32,6 +32,7 @@ void RegistrarPasajero(struct Pasajero *pasajeros, int *cantidadPasajeros)
 
     // Generar ID automático (ej: "00001", "00002", etc.)
     snprintf(nuevoPasajero.idpasajero, IDPASAJERO_MAX, "%05d", *cantidadPasajeros + 1);
+    // Incrementar el contador de pasajeros
     pasajeros[*cantidadPasajeros] = nuevoPasajero;
     (*cantidadPasajeros)++;
     printf("Pasajero registrado exitosamente. ID asignado: %s\n", nuevoPasajero.idpasajero);
